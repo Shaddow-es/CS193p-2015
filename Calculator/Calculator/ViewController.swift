@@ -41,7 +41,10 @@ class ViewController: UIViewController {
     
     var displayValue: Double {
         get {
-            return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
+            if let number = NSNumberFormatter().numberFromString(display.text!) {
+                return number.doubleValue
+            }
+            return 0
         }
         set {
             display.text = "\(newValue)"
