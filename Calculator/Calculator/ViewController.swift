@@ -24,7 +24,6 @@ class ViewController: UIViewController {
             display.text = digit
             userIsInTheMiddleOfTypingANumber = true
         }
-        println("digit = \(digit)")
     }
     
     var operandStack = Array<Double>()
