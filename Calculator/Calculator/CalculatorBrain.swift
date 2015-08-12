@@ -96,4 +96,37 @@ class CalculatorBrain {
         }
         return evaluate()
     }
+    
+    func clear() {
+        opStack.removeAll(keepCapacity: false)
+    }
+    
+    
+    private func history(textHistory: String, ops: [Op]) -> (history: String, remainingOps: [Op]) {
+        if !ops.isEmpty {
+            var remainingOps = ops
+            let op = remainingOps.removeLast()
+            switch op {
+            case .Operand(let operand):
+                return (op.description, remainingOps)
+            case .UnaryOperation(_, let operation):
+                let operandEvaluation = history(textHistory, ops: remainingOps)
+                return (op.description + "(" + operandEvaluation.history + ")" + textHistory, operandEvaluation.remainingOps)
+            case .BinaryOperation(_, let operation):
+                let op1Evaluation = history(textHistory, ops: remainingOps)
+                let op2Evaluation = history(op1Evaluation.history, ops: op1Evaluation.remainingOps)
+                let histOp1 = op2Evaluation.remainingOps.count<=1 ? op1Evaluation.history : "(" + op1Evaluation.history + ")"
+                let histOp2 = op1Evaluation.remainingOps.count<=1 ? op2Evaluation.history : "(" + op2Evaluation.history + ")"
+                return ( histOp2 + op.description + histOp1, op2Evaluation.remainingOps )
+            case .Constant(_, _):
+                return (op.description, remainingOps)
+            }
+        }
+        return ("", ops)
+    }
+    
+    func history() -> String {
+        let(result, remainder) = history("", ops: opStack)
+        return result
+    }
 }

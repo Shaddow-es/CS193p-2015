@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var history: UILabel!
     
     var userIsInTheMiddleOfTypingANumber = false
     
@@ -26,15 +27,14 @@ class ViewController: UIViewController {
         }
     }
     
-    var operandStack = Array<Double>()
-    
-    
     @IBAction func enter() {
-        userIsInTheMiddleOfTypingANumber = false
-        if let result = brain.pushOperand(displayValue) {
-            displayValue = result
-        } else {
-            displayValue = 0
+        if userIsInTheMiddleOfTypingANumber {
+            userIsInTheMiddleOfTypingANumber = false
+            if let result = brain.pushOperand(displayValue){
+                displayValue = result
+            } else {
+                displayValue = 0
+            }
         }
     }
     
@@ -51,6 +51,12 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func clear(sender: UIButton) {
+        brain.clear()
+        displayValue = 0
+        history.text = ""
+    }
+    
     @IBAction func operate(sender: UIButton) {
         if userIsInTheMiddleOfTypingANumber {
             enter()
@@ -62,6 +68,7 @@ class ViewController: UIViewController {
                 displayValue = 0
             }
         }
+        history.text = brain.history()
     }
 }
 
