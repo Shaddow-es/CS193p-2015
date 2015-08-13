@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="okA-Gc-Mtd">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Happiness View Controller-->
+        <scene sceneID="WMm-vf-awm">
+            <objects>
+                <viewController id="okA-Gc-Mtd" customClass="HappinessViewController" customModule="Happiness" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="udD-Eo-FVh"/>
+                        <viewControllerLayoutGuide type="bottom" id="06w-Hq-LLl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mFV-dc-kGn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="eKS-fd-ifA" customClass="FaceView" customModule="Happiness" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eKS-fd-ifA" secondAttribute="trailing" id="Iwd-4F-lzQ"/>
+                            <constraint firstItem="eKS-fd-ifA" firstAttribute="leading" secondItem="mFV-dc-kGn" secondAttribute="leading" id="NwX-qx-Itf"/>
+                            <constraint firstItem="eKS-fd-ifA" firstAttribute="bottom" secondItem="06w-Hq-LLl" secondAttribute="top" id="eFh-u2-Y1L"/>
+                            <constraint firstItem="eKS-fd-ifA" firstAttribute="top" secondItem="mFV-dc-kGn" secondAttribute="top" id="lOt-2E-8f1"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cT3-tn-czF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="643" y="218"/>
+        </scene>
+    </scenes>
+</document>
