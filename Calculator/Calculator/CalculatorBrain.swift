@@ -15,6 +15,7 @@ class CalculatorBrain {
         case UnaryOperation(String, Double -> Double)
         case BinaryOperation(String, (Double, Double) -> Double)
         case Constant(String, Double)
+        case Variable(String)
         
         var description: String {
             get {
@@ -27,6 +28,8 @@ class CalculatorBrain {
                     return symbol
                 case .Constant(let symbol, _):
                     return symbol
+                case .Variable(let symbol):
+                    return symbol
                 }
             }
         }
@@ -35,6 +38,8 @@ class CalculatorBrain {
     private var opStack = [Op]()
     
     private var knownOps = [String:Op]()
+    
+    var variableValues = [String:Double]()
     
     init() {
         func learnOp (op: Op){
@@ -94,6 +99,8 @@ class CalculatorBrain {
                 }
             case .Constant(_, let value):
                 return (value, remainingOps)
+            case .Variable(let symbol):
+                return (variableValues[symbol], remainingOps)
             }
         }
         return (nil, ops)
@@ -112,6 +119,11 @@ class CalculatorBrain {
         return evaluate()
     }
     
+    func pushOperand(symbol: String) -> Double? {
+        opStack.append(Op.Variable(symbol))
+        return evaluate()
+    }
+    
     func performOperation(symbol: String) -> Double? {
         if let operation = knownOps[symbol] {
             opStack.append(operation)
@@ -123,14 +135,11 @@ class CalculatorBrain {
         opStack.removeAll(keepCapacity: false)
     }
     
-    
     private func history(textHistory: String, ops: [Op]) -> (history: String, remainingOps: [Op]) {
         if !ops.isEmpty {
             var remainingOps = ops
             let op = remainingOps.removeLast()
             switch op {
-            case .Operand(let operand):
-                return (op.description, remainingOps)
             case .UnaryOperation(_, let operation):
                 let operandEvaluation = history(textHistory, ops: remainingOps)
                 return (op.description + "(" + operandEvaluation.history + ")" + textHistory, operandEvaluation.remainingOps)
@@ -140,7 +149,9 @@ class CalculatorBrain {
                 let histOp1 = op2Evaluation.remainingOps.count<=1 ? op1Evaluation.history : "(" + op1Evaluation.history + ")"
                 let histOp2 = op1Evaluation.remainingOps.count<=1 ? op2Evaluation.history : "(" + op2Evaluation.history + ")"
                 return ( histOp2 + op.description + histOp1, op2Evaluation.remainingOps )
-            case .Constant(_, _):
+            case .Constant(_, _): fallthrough
+            case .Operand(_): fallthrough
+            case .Variable(_):
                 return (op.description, remainingOps)
             }
         }

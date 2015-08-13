@@ -44,6 +44,10 @@ class ViewController: UIViewController {
         }
     }
     
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     @IBAction func clear(sender: UIButton) {
         brain.clear()
         displayValue = 0
