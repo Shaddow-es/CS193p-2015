@@ -30,23 +30,16 @@ class ViewController: UIViewController {
     @IBAction func enter() {
         if userIsInTheMiddleOfTypingANumber {
             userIsInTheMiddleOfTypingANumber = false
-            if let result = brain.pushOperand(displayValue){
-                displayValue = result
-            } else {
-                displayValue = 0
-            }
+            displayValue = brain.pushOperand(displayValue)
         }
     }
     
-    var displayValue: Double {
+    var displayValue: Double? {
         get {
-            if let number = NSNumberFormatter().numberFromString(display.text!) {
-                return number.doubleValue
-            }
-            return 0
+            return NSNumberFormatter().numberFromString(display.text!)?.doubleValue
         }
         set {
-            display.text = "\(newValue)"
+            display.text =  newValue != nil ? "\(newValue!)" : " "
             userIsInTheMiddleOfTypingANumber = false
         }
     }
@@ -62,11 +55,7 @@ class ViewController: UIViewController {
             enter()
         }
         if let operation = sender.currentTitle {
-            if let result = brain.performOperation(operation) {
-                displayValue = result
-            } else {
-                displayValue = 0
-            }
+            displayValue = brain.performOperation(operation)
         }
         history.text = brain.history()
     }
