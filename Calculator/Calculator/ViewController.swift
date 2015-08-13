@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         if let operation = sender.currentTitle {
             displayValue = brain.performOperation(operation)
         }
-        history.text = brain.history()
+        history.text = brain.description
     }
 }
 
