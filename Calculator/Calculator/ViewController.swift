@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     
     @IBAction func clear(sender: UIButton) {
         brain.clear()
-        displayValue = 0
+        displayValue = nil
         brain.variableValues.removeAll(keepCapacity: false)
     }
     
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         let varName = sender.currentTitle!
         userIsInTheMiddleOfTypingANumber = false
         brain.pushOperand(varName)
-        history.text = brain.description
+        displayValue = brain.evaluate()
     }
     
 }
