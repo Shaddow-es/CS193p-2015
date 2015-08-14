@@ -17,9 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLg-we-qHv">
-                                <rect key="frame" x="16" y="51" width="568" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="right" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eLg-we-qHv">
+                                <rect key="frame" x="388" y="28" width="196" height="20"/>
+                                <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -223,12 +224,6 @@
                                     <action selector="appendDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uau-Oe-7Ad"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mbe-V3-d7q">
-                                <rect key="frame" x="16" y="28" width="568" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irZ-wU-oA1">
                                 <rect key="frame" x="256" y="98" width="40" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -260,15 +255,23 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="=" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Mbe-V3-d7q">
+                                <rect key="frame" x="16" y="28" width="364" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eLg-we-qHv" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="1xM-QH-Crr"/>
-                            <constraint firstItem="Mbe-V3-d7q" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="4GB-3D-hdx"/>
-                            <constraint firstItem="Mbe-V3-d7q" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="AnC-vh-6Ao"/>
-                            <constraint firstItem="Mbe-V3-d7q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Efm-27-9fP"/>
-                            <constraint firstItem="eLg-we-qHv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="J1k-w1-lcm"/>
-                            <constraint firstItem="eLg-we-qHv" firstAttribute="top" secondItem="Mbe-V3-d7q" secondAttribute="top" constant="23" id="TOI-qb-Xnk"/>
+                            <constraint firstItem="eLg-we-qHv" firstAttribute="baseline" secondItem="Mbe-V3-d7q" secondAttribute="baseline" id="2DV-Zp-cY5"/>
+                            <constraint firstItem="eLg-we-qHv" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="3Nc-5W-KeY"/>
+                            <constraint firstItem="eLg-we-qHv" firstAttribute="top" secondItem="Mbe-V3-d7q" secondAttribute="top" id="Gei-Hj-pn2"/>
+                            <constraint firstItem="eLg-we-qHv" firstAttribute="bottom" secondItem="Mbe-V3-d7q" secondAttribute="bottom" id="IkR-Q2-Iyq"/>
+                            <constraint firstItem="Mbe-V3-d7q" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="M3p-uC-YaF"/>
+                            <constraint firstItem="Mbe-V3-d7q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="b4U-3x-d5t"/>
+                            <constraint firstItem="Mbe-V3-d7q" firstAttribute="leading" secondItem="eLg-we-qHv" secondAttribute="leading" id="dsU-W6-qq1"/>
+                            <constraint firstItem="eLg-we-qHv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="l1V-WT-e0U"/>
                         </constraints>
                     </view>
                     <connections>

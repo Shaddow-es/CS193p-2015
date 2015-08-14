@@ -65,7 +65,8 @@ class CalculatorBrain {
                 result += "," + resultExp2
                 remainder = remainderExp2
             }
-            return result        }
+            return result + "="
+        }
     }
     
     typealias PropertyList = AnyObject
