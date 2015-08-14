@@ -52,12 +52,11 @@ class ViewController: UIViewController {
     @IBAction func clear(sender: UIButton) {
         brain.clear()
         displayValue = 0
+        brain.variableValues.removeAll(keepCapacity: false)
     }
     
     @IBAction func operate(sender: UIButton) {
-        if userIsInTheMiddleOfTypingANumber {
-            enter()
-        }
+        enter()
         if let operation = sender.currentTitle {
             displayValue = brain.performOperation(operation)
         }
@@ -71,6 +70,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pushVariable(sender: UIButton) {
+        enter()
         let varName = sender.currentTitle!
         userIsInTheMiddleOfTypingANumber = false
         brain.pushOperand(varName)
