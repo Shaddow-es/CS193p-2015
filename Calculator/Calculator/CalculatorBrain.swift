@@ -59,13 +59,17 @@ class CalculatorBrain {
     
     var description: String {
         get {
-            var(result, remainder) = history("", ops: opStack)
-            while !remainder.isEmpty {
-                let (resultExp2, remainderExp2) = history("", ops: remainder)
-                result += "," + resultExp2
-                remainder = remainderExp2
+            if opStack.isEmpty {
+                return " "
+            }else {
+                var(result, remainder) = history("", ops: opStack)
+                while !remainder.isEmpty {
+                    let (resultExp2, remainderExp2) = history("", ops: remainder)
+                    result += "," + resultExp2
+                    remainder = remainderExp2
+                }
+                return result + "="
             }
-            return result + "="
         }
     }
     
@@ -132,7 +136,8 @@ class CalculatorBrain {
     }
     
     func pushOperand(symbol: String) -> Double? {
-        opStack.append(Op.Variable(symbol))
+        let op = Op.Variable(symbol)
+        opStack.append(op)
         return evaluate()
     }
     

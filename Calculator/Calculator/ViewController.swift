@@ -41,6 +41,7 @@ class ViewController: UIViewController {
         set {
             display.text =  newValue != nil ? "\(newValue!)" : " "
             userIsInTheMiddleOfTypingANumber = false
+            history.text = brain.description
         }
     }
     
@@ -51,7 +52,6 @@ class ViewController: UIViewController {
     @IBAction func clear(sender: UIButton) {
         brain.clear()
         displayValue = 0
-        history.text = ""
     }
     
     @IBAction func operate(sender: UIButton) {
@@ -61,7 +61,21 @@ class ViewController: UIViewController {
         if let operation = sender.currentTitle {
             displayValue = brain.performOperation(operation)
         }
+    }
+    
+    @IBAction func setVariableValue(sender: UIButton) {
+        let varName = sender.currentTitle!
+        let index = advance(varName.startIndex, 1)
+        brain.variableValues[varName[index..<varName.endIndex]] = displayValue
+        displayValue = brain.evaluate()
+    }
+    
+    @IBAction func pushVariable(sender: UIButton) {
+        let varName = sender.currentTitle!
+        userIsInTheMiddleOfTypingANumber = false
+        brain.pushOperand(varName)
         history.text = brain.description
     }
+    
 }
 
