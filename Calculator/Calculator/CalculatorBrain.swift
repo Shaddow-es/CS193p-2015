@@ -21,7 +21,7 @@ class CalculatorBrain {
             get {
                 switch self {
                 case .Operand(let operand):
-                    return "\(operand)"
+                    return NSNumberFormatter.localizedStringFromNumber(operand, numberStyle: NSNumberFormatterStyle.DecimalStyle)
                 case .UnaryOperation(let symbol, _):
                     return symbol
                 case .BinaryOperation(let symbol, _, _):
@@ -183,9 +183,7 @@ class CalculatorBrain {
             case .BinaryOperation(_, let precedence, _):
                 // si en los remainingOps hay operadores con mayor precedencia, poner paréntesis
                 let opsWithMinorPrecedence = remainingOps.filter({$0.precedence < precedence})
-                println("opsWithMinorPrecedence=\(opsWithMinorPrecedence)")
                 let hasOpsWithMinorPrecedence = !opsWithMinorPrecedence.isEmpty
-                println(" el operador \(op.description) tiene menos precedencia que alguno de los operadores restantes \(remainingOps) = \(hasOpsWithMinorPrecedence)")
                 let op1Evaluation = history(textHistory, ops: remainingOps)
                 let op2Evaluation = history("", ops: op1Evaluation.remainingOps)
                 let histOp1 = hasOpsWithMinorPrecedence ? "(" + op1Evaluation.history + ")" : op1Evaluation.history

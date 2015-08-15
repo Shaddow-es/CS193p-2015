@@ -39,7 +39,7 @@ class ViewController: UIViewController {
             return NSNumberFormatter().numberFromString(display.text!)?.doubleValue
         }
         set {
-            display.text =  newValue != nil ? "\(newValue!)" : " "
+            display.text = newValue == nil ? " " : NSNumberFormatter.localizedStringFromNumber(newValue!, numberStyle: NSNumberFormatterStyle.DecimalStyle)
             userIsInTheMiddleOfTypingANumber = false
             history.text = brain.description
         }
