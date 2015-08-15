@@ -55,6 +55,15 @@ class ViewController: UIViewController {
         brain.variableValues.removeAll(keepCapacity: false)
     }
     
+    @IBAction func undo(sender: UIButton) {
+        if userIsInTheMiddleOfTypingANumber {
+            display.text = count(display.text!)>0 ? dropLast(display.text!) : display.text
+        }else{
+            brain.undoLastOperation()
+            displayValue = brain.evaluate()
+        }
+    }
+    
     @IBAction func operate(sender: UIButton) {
         enter()
         if let operation = sender.currentTitle {

@@ -166,6 +166,12 @@ class CalculatorBrain {
         opStack.removeAll(keepCapacity: false)
     }
     
+    func undoLastOperation () {
+        if !opStack.isEmpty {
+            opStack.removeLast()
+        }
+    }
+    
     private func history(textHistory: String, ops: [Op]) -> (history: String, remainingOps: [Op]) {
         if !ops.isEmpty {
             var remainingOps = ops
