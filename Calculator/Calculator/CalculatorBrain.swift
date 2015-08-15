@@ -13,7 +13,7 @@ class CalculatorBrain {
     private enum Op: Printable {
         case Operand(Double)
         case UnaryOperation(String, Double -> Double)
-        case BinaryOperation(String, (Double, Double) -> Double)
+        case BinaryOperation(String, Int, (Double, Double) -> Double)
         case Constant(String, Double)
         case Variable(String)
         
@@ -24,12 +24,26 @@ class CalculatorBrain {
                     return "\(operand)"
                 case .UnaryOperation(let symbol, _):
                     return symbol
-                case .BinaryOperation(let symbol, _):
+                case .BinaryOperation(let symbol, _, _):
                     return symbol
                 case .Constant(let symbol, _):
                     return symbol
                 case .Variable(let symbol):
                     return symbol
+                }
+            }
+        }
+        
+        var precedence: Int {
+            get {
+                switch self {
+                case .Operand(_): fallthrough
+                case .UnaryOperation(_, _): fallthrough
+                case .Constant(_, _): fallthrough
+                case .Variable(_):
+                    return Int.max
+                case .BinaryOperation(_, let precedence, _):
+                    return precedence
                 }
             }
         }
@@ -45,10 +59,10 @@ class CalculatorBrain {
         func learnOp (op: Op){
             knownOps[op.description] = op
         }
-        learnOp(Op.BinaryOperation("×", *))
-        learnOp(Op.BinaryOperation("÷") {$1 / $0})
-        learnOp(Op.BinaryOperation("+") {$0 + $1})
-        learnOp(Op.BinaryOperation("−") {$1 - $0})
+        learnOp(Op.BinaryOperation("×", 1, *))
+        learnOp(Op.BinaryOperation("÷", 1) {$1 / $0})
+        learnOp(Op.BinaryOperation("+", 0) {$0 + $1})
+        learnOp(Op.BinaryOperation("−", 0) {$1 - $0})
         
         learnOp(Op.UnaryOperation("√", sqrt))
         learnOp(Op.UnaryOperation("sin", sin))
@@ -65,7 +79,7 @@ class CalculatorBrain {
                 var(result, remainder) = history("", ops: opStack)
                 while !remainder.isEmpty {
                     let (resultExp2, remainderExp2) = history("", ops: remainder)
-                    result += "," + resultExp2
+                    result = resultExp2 + "," + result
                     remainder = remainderExp2
                 }
                 return result + "="
@@ -105,7 +119,7 @@ class CalculatorBrain {
                 if let operand = operandEvaluation.result {
                     return (operation(operand), operandEvaluation.remainingOps)
                 }
-            case .BinaryOperation(_, let operation):
+            case .BinaryOperation(_, _, let operation):
                 let op1Evaluation = evaluate(remainingOps)
                 if let operand1 = op1Evaluation.result {
                     let op2Evaluation = evaluate(op1Evaluation.remainingOps)
@@ -157,13 +171,18 @@ class CalculatorBrain {
             var remainingOps = ops
             let op = remainingOps.removeLast()
             switch op {
-            case .UnaryOperation(_, let operation):
+            case .UnaryOperation(_, _):
                 let operandEvaluation = history(textHistory, ops: remainingOps)
                 return (op.description + "(" + operandEvaluation.history + ")" + textHistory, operandEvaluation.remainingOps)
-            case .BinaryOperation(_, let operation):
+            case .BinaryOperation(_, let precedence, _):
+                // si en los remainingOps hay operadores con mayor precedencia, poner paréntesis
+                let opsWithMinorPrecedence = remainingOps.filter({$0.precedence < precedence})
+                println("opsWithMinorPrecedence=\(opsWithMinorPrecedence)")
+                let hasOpsWithMinorPrecedence = !opsWithMinorPrecedence.isEmpty
+                println(" el operador \(op.description) tiene menos precedencia que alguno de los operadores restantes \(remainingOps) = \(hasOpsWithMinorPrecedence)")
                 let op1Evaluation = history(textHistory, ops: remainingOps)
                 let op2Evaluation = history("", ops: op1Evaluation.remainingOps)
-                let histOp1 = op1Evaluation.history
+                let histOp1 = hasOpsWithMinorPrecedence ? "(" + op1Evaluation.history + ")" : op1Evaluation.history
                 let histOp2 = op2Evaluation.history
                 return ( histOp2 + op.description + histOp1, op2Evaluation.remainingOps )
             case .Constant(_, _): fallthrough
