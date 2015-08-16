@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Autolayout/Autolayout.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Psychologist/Psychologist.xcodeproj">
    </FileRef>
    <FileRef
