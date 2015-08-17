@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yo9-G9-QB5">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Cassini View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="CassiniViewController" customModule="Cassini" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fs-Iu-VpY">
+                                <rect key="frame" x="245" y="222" width="111" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <state key="normal" title="Earth">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8qo-hH-hFy" kind="showDetail" identifier="Earth" id="c4h-jD-NO4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDo-bY-MIu">
+                                <rect key="frame" x="231" y="378" width="139" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <state key="normal" title="Saturn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8qo-hH-hFy" kind="showDetail" identifier="Saturn" id="gn5-cl-aWk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJR-sP-yeY">
+                                <rect key="frame" x="176" y="144" width="249" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <state key="normal" title="Logrosxbox">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8qo-hH-hFy" kind="showDetail" identifier="Logrosxbox" id="6YE-hS-LeH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJR-1v-YHm">
+                                <rect key="frame" x="224" y="300" width="153" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <state key="normal" title="Cassini">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8qo-hH-hFy" kind="showDetail" identifier="Cassini" id="aJF-zi-UJb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8fs-Iu-VpY" firstAttribute="centerX" secondItem="YJR-1v-YHm" secondAttribute="centerX" id="7hx-Zq-cxc"/>
+                            <constraint firstItem="8fs-Iu-VpY" firstAttribute="top" secondItem="FJR-sP-yeY" secondAttribute="bottom" constant="8" symbolic="YES" id="FsT-Bt-cqR"/>
+                            <constraint firstItem="YJR-1v-YHm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JlX-6a-TH8"/>
+                            <constraint firstAttribute="centerX" secondItem="YJR-1v-YHm" secondAttribute="centerX" id="KoJ-WT-YFm"/>
+                            <constraint firstItem="QDo-bY-MIu" firstAttribute="centerX" secondItem="YJR-1v-YHm" secondAttribute="centerX" id="WC5-Sx-lCJ"/>
+                            <constraint firstItem="FJR-sP-yeY" firstAttribute="centerX" secondItem="8fs-Iu-VpY" secondAttribute="centerX" id="fEF-Yn-Ehi"/>
+                            <constraint firstItem="YJR-1v-YHm" firstAttribute="top" secondItem="8fs-Iu-VpY" secondAttribute="bottom" constant="8" symbolic="YES" id="gBR-VY-bgu"/>
+                            <constraint firstItem="QDo-bY-MIu" firstAttribute="top" secondItem="YJR-1v-YHm" secondAttribute="bottom" constant="8" symbolic="YES" id="gP2-tJ-RBQ"/>
+                            <constraint firstItem="FJR-sP-yeY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="171" id="hVf-Ex-tOq"/>
+                            <constraint firstAttribute="centerY" secondItem="YJR-1v-YHm" secondAttribute="top" id="xmf-bB-Zt9"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="hVf-Ex-tOq"/>
+                                <exclude reference="JlX-6a-TH8"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="PjK-qp-4lW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2115" y="765"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="Jee-O9-XcT">
+            <objects>
+                <viewController id="8qo-hH-hFy" customClass="ImageViewController" customModule="Cassini" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gMr-cV-6lI"/>
+                        <viewControllerLayoutGuide type="bottom" id="wIT-55-Qgd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="adG-8p-m7T">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2OB-Sa-4pv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ceE-mu-XYM">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="ceE-mu-XYM" secondAttribute="centerY" id="MSM-8V-k10"/>
+                            <constraint firstAttribute="centerX" secondItem="ceE-mu-XYM" secondAttribute="centerX" id="ajM-W4-gFI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="2OB-Sa-4pv" id="dVx-C4-1Id"/>
+                        <outlet property="spinner" destination="ceE-mu-XYM" id="Oqw-VK-ScI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gkY-ae-lUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2115" y="1588"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eCL-hx-02p">
+            <objects>
+                <navigationController id="0my-RI-r8m" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mSY-Zz-Q1B">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ecR-zQ-BY4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o9a-m6-Aad" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1428" y="770"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="Kab-Ry-TAU">
+            <objects>
+                <splitViewController id="yo9-G9-QB5" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="0my-RI-r8m" kind="relationship" relationship="masterViewController" id="n37-nR-pBM"/>
+                        <segue destination="8qo-hH-hFy" kind="relationship" relationship="detailViewController" id="MRP-Dr-6dj"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N3v-wa-pkX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="656" y="1026"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="6YE-hS-LeH"/>
+    </inferredMetricsTieBreakers>
+</document>

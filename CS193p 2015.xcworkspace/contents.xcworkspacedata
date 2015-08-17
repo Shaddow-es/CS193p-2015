@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Cassini/Cassini.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Autolayout/Autolayout.xcodeproj">
    </FileRef>
    <FileRef
