@@ -138,8 +138,7 @@ class CalculatorBrain {
     
     func evaluate() -> Double? {
         let (result, remainder) = evaluate(opStack)
-        println("\(opStack) = \(result) with remainder left over")
-        return result
+        return remainder.isEmpty ? result : nil
     }
     
     func pushOperand(operand: Double?) -> Double? {
