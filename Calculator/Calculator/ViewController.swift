@@ -25,6 +25,7 @@ class ViewController: UIViewController {
             display.text = digit
             userIsInTheMiddleOfTypingANumber = true
         }
+        history.text = " "
     }
     
     @IBAction func enter() {
