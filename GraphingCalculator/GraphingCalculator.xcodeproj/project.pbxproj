@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		865C29CD1B84AB5B003FB99E /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C29CC1B84AB5B003FB99E /* GraphView.swift */; };
+		865C29CF1B84AD82003FB99E /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C29CE1B84AD82003FB99E /* GraphViewController.swift */; };
 		865CC80C1B847A1B0082C9F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865CC80B1B847A1B0082C9F0 /* AppDelegate.swift */; };
 		865CC8111B847A1B0082C9F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 865CC80F1B847A1B0082C9F0 /* Main.storyboard */; };
 		865CC8131B847A1B0082C9F0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 865CC8121B847A1B0082C9F0 /* Images.xcassets */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		865C29CC1B84AB5B003FB99E /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		865C29CE1B84AD82003FB99E /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		865CC8061B847A1A0082C9F0 /* GraphingCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphingCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		865CC80A1B847A1A0082C9F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		865CC80B1B847A1B0082C9F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 				865CC82D1B847B7F0082C9F0 /* CalculatorViewController.swift */,
 				865CC80F1B847A1B0082C9F0 /* Main.storyboard */,
 				865CC8091B847A1A0082C9F0 /* Supporting Files */,
+				865C29CC1B84AB5B003FB99E /* GraphView.swift */,
+				865C29CE1B84AD82003FB99E /* GraphViewController.swift */,
 			);
 			path = GraphingCalculator;
 			sourceTree = "<group>";
@@ -218,8 +224,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				865C29CD1B84AB5B003FB99E /* GraphView.swift in Sources */,
 				865CC82E1B847B7F0082C9F0 /* CalculatorViewController.swift in Sources */,
 				865CC80C1B847A1B0082C9F0 /* AppDelegate.swift in Sources */,
+				865C29CF1B84AD82003FB99E /* GraphViewController.swift in Sources */,
 				865CC8301B847BD70082C9F0 /* CalculatorBrain.swift in Sources */,
 				865CC82C1B847B1C0082C9F0 /* AxesDrawer.swift in Sources */,
 			);
@@ -419,6 +427,7 @@
 				865CC8271B847A1B0082C9F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		865CC8281B847A1B0082C9F0 /* Build configuration list for PBXNativeTarget "GraphingCalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -427,6 +436,7 @@
 				865CC82A1B847A1B0082C9F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

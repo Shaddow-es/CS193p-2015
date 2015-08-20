@@ -49,7 +49,40 @@ class CalculatorBrain {
         }
     }
     
-    private var opStack = [Op]()
+    private let defaults = NSUserDefaults.standardUserDefaults()
+    private struct Constants {
+        static let DefaultsKey = "CalculatorBrain.Program"
+    }
+    
+    private var opStack = [Op]() {
+        didSet {
+            defaults.setObject(program, forKey: Constants.DefaultsKey)
+            defaults.synchronize()
+        }
+    }
+    
+    
+    typealias PropertyList = AnyObject
+    private var program: PropertyList { // guaranteed to be a PropertyList
+        get {
+            return opStack.map{ $0.description }
+        }
+        set {
+            if let opSymbols = newValue as? Array<String> {
+                var newOpStack = [Op]()
+                for opSymbol in opSymbols {
+                    if let op = knownOps[opSymbol] {
+                        newOpStack.append(op)
+                    }else if let operand = NSNumberFormatter().numberFromString(opSymbol)?.doubleValue {
+                        newOpStack.append(.Operand(operand))
+                    }else {
+                        newOpStack.append(Op.Variable(opSymbol))
+                    }
+                }
+                opStack = newOpStack
+            }
+        }
+    }
     
     private var knownOps = [String:Op]()
     
@@ -69,6 +102,8 @@ class CalculatorBrain {
         learnOp(Op.UnaryOperation("cos", cos))
         
         learnOp(Op.Constant("π", M_PI))
+        
+        program = defaults.objectForKey(Constants.DefaultsKey) ?? []
     }
     
     var description: String {
@@ -83,26 +118,6 @@ class CalculatorBrain {
                     remainder = remainderExp2
                 }
                 return result + "="
-            }
-        }
-    }
-    
-    typealias PropertyList = AnyObject
-    var program: PropertyList { // guaranteed to be a PropertyList
-        get {
-            return opStack.map{ $0.description }
-        }
-        set {
-            if let opSymbols = newValue as? Array<String> {
-                var newOpStack = [Op]()
-                for opSymbol in opSymbols {
-                    if let op = knownOps[opSymbol] {
-                        newOpStack.append(op)
-                    }else if let operand = NSNumberFormatter().numberFromString(opSymbol)?.doubleValue {
-                        newOpStack.append(.Operand(operand))
-                    }
-                }
-                opStack = newOpStack
             }
         }
     }

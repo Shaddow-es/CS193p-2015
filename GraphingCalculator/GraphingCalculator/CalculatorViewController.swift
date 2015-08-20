@@ -13,9 +13,19 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var display: UILabel!
     @IBOutlet weak var history: UILabel!
     
-    var userIsInTheMiddleOfTypingANumber = false
+    private var userIsInTheMiddleOfTypingANumber = false
+    private var brain = CalculatorBrain()
     
-    var brain = CalculatorBrain()
+    private var displayValue: Double? {
+        get {
+            return NSNumberFormatter().numberFromString(display.text!)?.doubleValue
+        }
+        set {
+            display.text = newValue == nil ? " " : NSNumberFormatter.localizedStringFromNumber(newValue!, numberStyle: NSNumberFormatterStyle.DecimalStyle)
+            userIsInTheMiddleOfTypingANumber = false
+            history.text = brain.description
+        }
+    }
     
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
@@ -33,21 +43,6 @@ class CalculatorViewController: UIViewController {
             userIsInTheMiddleOfTypingANumber = false
             displayValue = brain.pushOperand(displayValue)
         }
-    }
-    
-    var displayValue: Double? {
-        get {
-            return NSNumberFormatter().numberFromString(display.text!)?.doubleValue
-        }
-        set {
-            display.text = newValue == nil ? " " : NSNumberFormatter.localizedStringFromNumber(newValue!, numberStyle: NSNumberFormatterStyle.DecimalStyle)
-            userIsInTheMiddleOfTypingANumber = false
-            history.text = brain.description
-        }
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     @IBAction func clear(sender: UIButton) {
@@ -84,6 +79,26 @@ class CalculatorViewController: UIViewController {
         let varName = sender.currentTitle!
         userIsInTheMiddleOfTypingANumber = false
         brain.pushOperand(varName)
+        displayValue = brain.evaluate()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var destination = segue.destinationViewController as? UIViewController
+        if let navCon = destination as? UINavigationController {
+            destination = navCon.visibleViewController
+        }
+        if let gvc = destination as? GraphViewController {
+            if let identifier = segue.identifier {
+                switch identifier {
+                case "graph":
+                    gvc.title = brain.description
+                default: break
+                }
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
         displayValue = brain.evaluate()
     }
     
