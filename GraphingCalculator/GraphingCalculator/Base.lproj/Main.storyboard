@@ -1007,7 +1007,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Calculator" id="RUX-ww-pJw">
-                        <barButtonItem key="rightBarButtonItem" systemItem="fastForward" id="yOA-vV-4m8">
+                        <barButtonItem key="rightBarButtonItem" title="Graph" id="yOA-vV-4m8">
                             <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="zfj-Rx-dxV" kind="showDetail" identifier="graph" id="CkG-ZA-Wcu"/>
