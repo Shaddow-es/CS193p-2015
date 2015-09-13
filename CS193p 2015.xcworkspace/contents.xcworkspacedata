@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Dropit/Dropit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:GraphingCalculator/GraphingCalculator.xcodeproj">
    </FileRef>
    <FileRef
